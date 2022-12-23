@@ -39,12 +39,16 @@ func GenerateCLI(srcDir, pkg, funcName, outFile string) error {
 	b.WriteString("\nfunc main() {\n")
 	b.WriteString("\tvar input struct {\n")
 	for _, input := range funcSignature.Inputs {
+		name, err := ParseName(input.Name)
+		if err != nil {
+			return err
+		}
 		b.WriteString("\t\t")
-		b.WriteString(input.Name.PascalCase())
+		b.WriteString(name.PascalCase())
 		b.WriteString(" ")
-		b.WriteString(input.Type.Name)
+		input.Type.Write(&b)
 		b.WriteString(" `json:\"")
-		b.WriteString(input.Name.SnakeCase())
+		b.WriteString(name.SnakeCase())
 		b.WriteString("\"`\n")
 	}
 	b.WriteString("\t}\n")
@@ -69,21 +73,29 @@ func GenerateCLI(srcDir, pkg, funcName, outFile string) error {
 	b.WriteString(funcName)
 	b.WriteString("(")
 	for i, input := range funcSignature.Inputs {
+		name, err := ParseName(input.Name)
+		if err != nil {
+			return err
+		}
 		if i > 0 {
 			b.WriteString(", ")
 		}
 		b.WriteString("input.")
-		b.WriteString(input.Name.PascalCase())
+		b.WriteString(name.PascalCase())
 	}
 	b.WriteString(")\n")
 	b.WriteString("\tvar output struct {\n")
 	for _, output := range funcSignature.Outputs {
+		name, err := ParseName(output.Name)
+		if err != nil {
+			return err
+		}
 		b.WriteString("\t\t")
-		b.WriteString(output.Name.PascalCase())
+		b.WriteString(name.PascalCase())
 		b.WriteString(" ")
-		b.WriteString(output.Type.Name)
+		output.Type.Write(&b)
 		b.WriteString(" `json:\"")
-		b.WriteString(output.Name.SnakeCase())
+		b.WriteString(name.SnakeCase())
 		b.WriteString("\"`\n")
 	}
 	b.WriteString("\t}\n")

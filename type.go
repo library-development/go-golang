@@ -1,6 +1,9 @@
 package golang
 
-import "go/ast"
+import (
+	"go/ast"
+	"io"
+)
 
 type Type struct {
 	IsStruct bool
@@ -41,3 +44,5 @@ func (t *Type) Packages() []string {
 	}
 	return pkgs
 }
+
+func (t *Type) Write(io.Writer) error

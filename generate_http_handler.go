@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"strings"
 
-	"github.com/library-development/go-strutil"
+	"lib.dev/strutil"
 )
 
 // GenerateHandler generates ServeHTTP methods for each type declaration in the file.

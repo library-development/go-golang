@@ -7,7 +7,7 @@ import (
 	"path/filepath"
 	"strconv"
 
-	"github.com/library-development/go-nameconv"
+	"lib.dev/nameconv"
 )
 
 // ReadFuncSignature reads the function signature of a function in a package.
