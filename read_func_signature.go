@@ -33,12 +33,12 @@ func ReadFuncSignature(srcDir, pkg, funcName string) (*FuncSignature, error) {
 						if fn.Name.Name == funcName {
 							for _, f := range fn.Type.Params.List {
 								for _, n := range f.Names {
-									typeID, err := BuildID(pkg, imports, f.Type)
+									typeID, err := BuildIdent(pkg, imports, f.Type)
 									if err != nil {
 										return nil, err
 									}
 									field := Field{
-										Name: nameconv.Name{Words: []string{n.Name}},
+										Name: n.Name,
 										Type: typeID,
 									}
 									sig.Inputs = append(sig.Inputs, field)
@@ -49,7 +49,7 @@ func ReadFuncSignature(srcDir, pkg, funcName string) (*FuncSignature, error) {
 							for _, f := range fn.Type.Results.List {
 								if len(f.Names) == 0 {
 									outID++
-									typeID, err := BuildID(pkg, imports, f.Type)
+									typeID, err := BuildIdent(pkg, imports, f.Type)
 									if err != nil {
 										return nil, err
 									}
@@ -62,7 +62,7 @@ func ReadFuncSignature(srcDir, pkg, funcName string) (*FuncSignature, error) {
 								}
 								for range f.Names {
 									outID++
-									typeID, err := BuildID(pkg, imports, f.Type)
+									typeID, err := BuildIdent(pkg, imports, f.Type)
 									if err != nil {
 										return nil, err
 									}

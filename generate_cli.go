@@ -20,10 +20,14 @@ func GenerateCLI(srcDir, pkg, funcName, outFile string) error {
 	importMap.AddPackage("encoding/json")
 	importMap.AddPackage("os")
 	for _, input := range funcSignature.Inputs {
-		importMap.AddPackage(input.Type.Pkg)
+		for _, pkg := range input.Type.Packages() {
+			importMap.AddPackage(pkg)
+		}
 	}
 	for _, output := range funcSignature.Outputs {
-		importMap.AddPackage(output.Type.Pkg)
+		for _, pkg := range output.Type.Packages() {
+			importMap.AddPackage(pkg)
+		}
 	}
 	err = os.MkdirAll(filepath.Dir(outFile), os.ModePerm)
 	if err != nil {
