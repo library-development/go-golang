@@ -2,6 +2,6 @@ package golang
 
 import "go/ast"
 
-func BuildType(importMap ImportMap, t *ast.TypeSpec) (*Type, error) {
+func BuildType(currPkg string, importMap ImportMap, t ast.Expr) (*Type, error) {
 	return nil, nil
 }

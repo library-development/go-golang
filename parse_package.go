@@ -31,13 +31,13 @@ func ParsePackage(srcDir, pkgName string) (*Package, error) {
 				switch d := d.(type) {
 				case *ast.GenDecl:
 					for _, s := range d.Specs {
-						switch s := s.(type) {
+						switch spec := s.(type) {
 						case *ast.TypeSpec:
-							t, err := BuildType(importMap, s)
+							typ, err := BuildType(pkgName, importMap, spec.Type)
 							if err != nil {
 								return nil, err
 							}
-							p.Types[s.Name.Name] = t
+							p.Types[spec.Name.Name] = typ
 						}
 					}
 				}

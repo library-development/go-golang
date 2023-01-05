@@ -1,6 +1,7 @@
 package golang
 
 import (
+	"errors"
 	"go/ast"
 	"io"
 )
@@ -45,4 +46,6 @@ func (t *Type) Packages() []string {
 	return pkgs
 }
 
-func (t *Type) Write(io.Writer) error
+func (t *Type) Write(io.Writer) error {
+	return errors.New("not implemented")
+}
