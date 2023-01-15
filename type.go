@@ -1,7 +1,6 @@
 package golang
 
 import (
-	"errors"
 	"go/ast"
 	"io"
 )
@@ -47,5 +46,5 @@ func (t *Type) Packages() []string {
 }
 
 func (t *Type) Write(io.Writer) error {
-	return errors.New("not implemented")
+	panic("not implemented")
 }
