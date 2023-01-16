@@ -1,8 +1,11 @@
 package golang
 
-import "lib.dev/nameconv"
+import (
+	"lib.dev/english"
+	"lib.dev/nameconv"
+)
 
-func ParseName(name string) (*nameconv.Name, error) {
+func ParseName(name string) (english.Name, error) {
 	n, err := nameconv.ParseCamelCase(name)
 	if err != nil {
 		n, err = nameconv.ParsePascalCase(name)
