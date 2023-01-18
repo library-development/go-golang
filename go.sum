@@ -1,2 +1,4 @@
-lib.dev/nameconv v0.0.0-20221223233617-17b12b997591 h1:JTHsLH0FOHeAvWpNPuwWwC3vak0tY7fuV6RUf5plX3M=
-lib.dev/nameconv v0.0.0-20221223233617-17b12b997591/go.mod h1:ZreROP6WykjnxzAILXM2u1LRXb8qiJm/nqt6x+5Yj5M=
+github.com/library-development/go-english v0.0.0-20230118225749-8397028d3860 h1:Plu6UKuuxkizJJnqx559X0rgbMMrZeCenoCixL3vfFo=
+github.com/library-development/go-english v0.0.0-20230118225749-8397028d3860/go.mod h1:FGbvaIhMjrmao60Dx4o3cwJQdU6AtzSu4MrGYAGkXxs=
+github.com/library-development/go-nameconv v0.0.0-20230118230451-7e86b2bd3679 h1:kzOqntIqW2XSZDppHuban/Jg9cJKZZUfUSkmfazCFrE=
+github.com/library-development/go-nameconv v0.0.0-20230118230451-7e86b2bd3679/go.mod h1:kLR+/Mfh3XMZYMTj2q6DNDqcU/U7ZvsgMtumHjUcIyU=
