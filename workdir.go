@@ -160,7 +160,7 @@ func (dir Workdir) ParsePackage(path string) (*Package, error) {
 func (w Workdir) Pull(org, repo string) error {
 	// Check if the repo is cloned.
 	repoPath := filepath.Join(string(w), org, repo)
-	if _, err := os.Stat(repo); os.IsNotExist(err) {
+	if _, err := os.Stat(repoPath); os.IsNotExist(err) {
 		// Clone the repo.
 		err = w.CloneGithubRepo(org, repo)
 		if err != nil {
