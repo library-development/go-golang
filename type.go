@@ -7,24 +7,20 @@ import (
 
 type Type struct {
 	IsStruct bool
-	// If struct
-	Fields []Field
+	Fields   []Field // If struct
 
-	IsMap bool
-	// If map
-	KeyType   *Type
-	ValueType *Type
+	IsMap     bool
+	KeyType   *Type // If map
+	ValueType *Type // If map
 
 	IsPointer bool
 	IsArray   bool
-	// If pointer or array
-	BaseType *Type
+	BaseType  *Type // If pointer or array
 
 	IsIdent bool
-	// If identifier
-	Ident *Ident
+	Ident   *Ident // If identifier
 
-	Methods []*ast.FuncDecl
+	Methods map[string]*ast.FuncDecl
 }
 
 func (t *Type) Packages() []string {

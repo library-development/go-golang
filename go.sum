@@ -2,3 +2,5 @@ github.com/library-development/go-english v0.0.0-20230118225749-8397028d3860 h1:
 github.com/library-development/go-english v0.0.0-20230118225749-8397028d3860/go.mod h1:FGbvaIhMjrmao60Dx4o3cwJQdU6AtzSu4MrGYAGkXxs=
 github.com/library-development/go-nameconv v0.0.0-20230118230451-7e86b2bd3679 h1:kzOqntIqW2XSZDppHuban/Jg9cJKZZUfUSkmfazCFrE=
 github.com/library-development/go-nameconv v0.0.0-20230118230451-7e86b2bd3679/go.mod h1:kLR+/Mfh3XMZYMTj2q6DNDqcU/U7ZvsgMtumHjUcIyU=
+golang.org/x/mod v0.7.0 h1:LapD9S96VoQRhi/GrNTqeBJFrUjs5UHCAtTlgwA5oZA=
+golang.org/x/mod v0.7.0/go.mod h1:iBbtSCu2XBx23ZKBPSOrRkjjQPZFPuis4dIYUhu/chs=

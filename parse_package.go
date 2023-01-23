@@ -64,7 +64,7 @@ func ParsePackage(srcDir, pkgName string) (*Package, error) {
 						if err != nil {
 							return nil, err
 						}
-						p.Types[ident.Name].Methods = append(p.Types[ident.Name].Methods, d)
+						p.Types[ident.Name].Methods[d.Name.Name] = d
 					} else {
 						p.Funcs[d.Name.Name] = d
 					}
