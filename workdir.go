@@ -44,8 +44,8 @@ func (dir Workdir) CloneGithubRepo(org, repo string) error {
 }
 
 // Build runs go build -o output target in the workdir.
-func (dir Workdir) Build(target, output string) error {
-	cmd := exec.Command("go", "build", "-o", output, target)
+func (dir Workdir) Build(path, output string) error {
+	cmd := exec.Command("go", "build", "-o", output, path)
 	cmd.Dir = string(dir)
 	out, err := cmd.CombinedOutput()
 	if err != nil {
@@ -153,4 +153,25 @@ func (dir Workdir) ParsePackage(path string) (*Package, error) {
 		}
 	}
 	return p, nil
+}
+
+// Pull pulls the latest changes from the remote for a given repo.
+// If the repo is not cloned, it will be cloned.
+func (w Workdir) Pull(org, repo string) error {
+	// Check if the repo is cloned.
+	repoPath := filepath.Join(string(w), org, repo)
+	if _, err := os.Stat(repo); os.IsNotExist(err) {
+		// Clone the repo.
+		err = w.CloneGithubRepo(org, repo)
+		if err != nil {
+			return fmt.Errorf("CloneGithubRepo: %s", err)
+		}
+	}
+	cmd := exec.Command("git", "pull")
+	cmd.Dir = filepath.Dir(repoPath)
+	out, err := cmd.CombinedOutput()
+	if err != nil {
+		return fmt.Errorf("git pull: %s: %s", err, out)
+	}
+	return nil
 }
