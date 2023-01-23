@@ -158,6 +158,8 @@ func (dir Workdir) ParsePackage(path string) (*Package, error) {
 // Pull pulls the latest changes from the remote for a given repo.
 // If the repo is not cloned, it will be cloned.
 func (w Workdir) Pull(org, repo string) error {
+	orgPath := filepath.Join(string(w), org)
+	os.MkdirAll(orgPath, 0755)
 	// Check if the repo is cloned.
 	repoPath := filepath.Join(string(w), org, repo)
 	if _, err := os.Stat(repoPath); os.IsNotExist(err) {
